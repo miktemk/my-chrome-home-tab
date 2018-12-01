@@ -4,7 +4,8 @@ import { TileVM } from './tile/tile.component';
 @Component({
   selector: 'mik-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
+  styleUrls: ['./app.component.less'],
+  preserveWhitespaces: true,
 })
 export class AppComponent {
   title = 'my-tab-sample';
