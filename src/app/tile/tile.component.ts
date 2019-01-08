@@ -8,17 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TileComponent implements OnInit {
 
   @Input()
-  vm: TileVM;
+  url: string;
+
+  @Input()
+  title: string;
+
+  @Input()
+  image: string;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-}
-
-export class TileVM {
-  url: string;
-  title?: string;
-  image?: string;
 }

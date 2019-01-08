@@ -54,7 +54,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "my-tab-sample:build"
+            "browserTarget": "my-tab-sample:build",
+            "port": 4205
           },
           "configurations": {
             "production": {
