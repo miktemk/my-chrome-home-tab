@@ -3,79 +3,498 @@
   <head>
     <meta charset="UTF-8" />
     <title>0_o</title>
-    <link rel="icon" type="image/x-icon" href="https://avatars1.githubusercontent.com/u/3788283?s=50&v=4">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap-grid.min.css" integrity="sha256-UQsknf/mQPLQ3ybNMD/V2mKe4JGc7KuYUxOhjQW0P18=" crossorigin="anonymous" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://avatars1.githubusercontent.com/u/3788283?s=50&v=4"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap-grid.min.css"
+      integrity="sha256-UQsknf/mQPLQ3ybNMD/V2mKe4JGc7KuYUxOhjQW0P18="
+      crossorigin="anonymous"
+    />
     <style>
-      html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}.other-links{margin-top:30px}.tile-row{display:grid;grid-template-columns:repeat(5,minmax(10px,100px)) repeat(5,minmax(10px,100px));grid-row-gap:6px;grid-column-gap:6px;justify-content:center;align-content:center;margin-top:50px}@media (max-width:768px){.tile-row{grid-template-columns:repeat(5,minmax(10px,100px))}}.tile-con{position:relative;display:block;background-size:cover;height:100px;box-sizing:border-box}.tile-con .tile-title{position:absolute;top:-1em;white-space:nowrap;font-family:'Gill Sans','Gill Sans MT',Calibri,'Trebuchet MS',sans-serif;font-size:12px;background-color:#fffefe;padding:2px}.tile-con:hover{border:3px solid #f159a0}.tile-con:hover .tile-title{border:1px solid #f159a0;display:block;z-index:100}.other-links{margin-top:70px}
+      html {
+        font-family: sans-serif;
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+      }
+      .other-links {
+        margin-top: 30px;
+      }
+      .other-links.centered {
+        display: flex;
+        justify-content: center;
+      }
+      .tile-row {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(10px, 100px)) repeat(
+            5,
+            minmax(10px, 100px)
+          );
+        grid-row-gap: 6px;
+        grid-column-gap: 6px;
+        justify-content: center;
+        align-content: center;
+        margin-top: 50px;
+      }
+      .tile-con {
+        position: relative;
+        display: block;
+        background-size: cover;
+        height: 100px;
+        box-sizing: border-box;
+      }
+      .tile-con .tile-title {
+        position: absolute;
+        top: -1em;
+        white-space: nowrap;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        font-size: 12px;
+        background-color: #fffefe;
+        padding: 2px;
+      }
+      .tile-con:hover {
+        border: 3px solid #f159a0;
+      }
+      .tile-con:hover .tile-title {
+        border: 1px solid #f159a0;
+        display: block;
+        z-index: 100;
+      }
+      .cb-code {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+      }
+      .cb-code label {
+        width: 200px;
+        font-size: 10px;
+        text-align: right;
+        margin-right: 5px;
+      }
+      .cb-code input {
+        width: 400px;
+      }
+      @media (max-width: 768px) {
+        .tile-row {
+          grid-template-columns: repeat(5, minmax(10px, 100px));
+        }
+      }
+
+      body {
+        font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        background-color: #f5f5f5;
+      }
+      .calendar .calendar-header {
+        background-color: #f5f5f5;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        border: 0;
+      }
+      .calendar .calendar-header .year-title {
+        font-size: 18px;
+      }
+      .calendar
+        .calendar-header
+        .year-title:not(.year-neighbor):not(.year-neighbor2) {
+        border-bottom: 2px solid #2196f3;
+      }
+      .calendar .months-container .month-container {
+        height: 260px;
+        margin-bottom: 25px;
+      }
+      .calendar table.month {
+        background-color: #fff;
+        box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+        height: 100%;
+      }
+      .calendar table.month th.month-title {
+        background-color: #2196f3;
+        color: #fff;
+        padding: 12px;
+        font-weight: 400;
+      }
+      .calendar table.month th.day-header {
+        padding-top: 10px;
+        color: #cdcdcd;
+        font-weight: 700;
+        font-size: 10px !important;
+      }
+      .calendar table.month td.day .day-content {
+        padding: 8px;
+        border-radius: 100%;
+      }
     </style>
+    <style type="text/less"></style>
   </head>
   <body>
     <div id="root"></div>
     <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-markdown/4.3.0/react-markdown.js" integrity="sha256-4jDgUokdWbazrdnMjWm+TftvBFnOwSNIpvKhgYsInfw=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <script src="https://unpkg.com/rc-year-calendar@latest/dist/rc-year-calendar.umd.js"></script>
+    <script src="https://unpkg.com/react-bootstrap@latest/dist/react-bootstrap.min.js"></script>
+    <!-- <script src=""></script> -->
+    <!-- <script src=""></script> -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/react-markdown/4.3.0/react-markdown.js"
+      integrity="sha256-4jDgUokdWbazrdnMjWm+TftvBFnOwSNIpvKhgYsInfw="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
     <script type="text/babel">
-function MikTile(props) {
-  var divStyle = {
-    backgroundImage: 'url(' + props.image + ')', 
-  }; 
-  return (
-    <a href={props.url}>
-      <div className="tile-con" style={divStyle}>
-        <div className="tile-title">{ props.title }</div>
-      </div>
-    </a>
-  );
-}
-function MikTiles(props) {
-  return (
-    <div className="container">
-      <div className="tile-row">
-        <MikTile title="Weather Toronto" url="https://www.google.ca/search?q=weather+toronto" image="https://is5-ssl.mzstatic.com/image/thumb/Purple/v4/31/70/8f/31708f5a-1615-b54d-7663-8b7e801ef639/source/256x256bb.jpg" />
-        <MikTile title="Weather Wasaga" url="https://www.google.ca/search?q=weather+wasaga" image="https://tile03-cdn.maptoolkit.net/terrain/12/1137/1481.png" />
-        <MikTile title="github/miktemk" url="https://github.com/miktemk" image="https://avatars1.githubusercontent.com/u/3788283?s=400&v=4" />
-        <MikTile title="bitbucket/miktemk" url="https://bitbucket.org/miktemk/" image="https://i.ibb.co/Z8SzT7n/3788283.jpg" />
-        {/* <MikTile title="Gmail (0)" url="https://mail.google.com/mail/u/" image="https://cdn.iconscout.com/icon/free/png-256/gmail-11-226399.png" /> */}
-        {/* <MikTile title="Gmail (1)" url="https://mail.google.com/mail/u/1/#inbox" image="https://i0.wp.com/www.mstoic.com/wp-content/uploads/2013/04/gmail1.png" /> */}
-        <MikTile title="Gmail (0)" url="https://mail.google.com/mail/u" image="https://i0.wp.com/www.mstoic.com/wp-content/uploads/2013/04/gmail1.png" />
-        <MikTile title="Entropy" url="https://entropyapp.github.io" image="https://myrealdomain.com/images/orange-circle-logo-2.png" />
-        {/* <MikTile title="" url="" image="" /> */}
-      </div>
+      const DateDayToday = new Date();
+      DateDayToday.setHours(0, 0, 0, 0);
 
-      <div className="tile-row">
-        <MikTile title="Youtube2Mp3" url="https://ytmp3.cc/" image="https://s3.amazonaws.com/media.muckrack.com/profile/images/3836116/grabmp3-2.JPG.256x256_q100_crop-smart.jpg" />
-        <MikTile title="Leshy labs" url="https://www.leshylabs.com/apps/sstool/" image="https://www.leshylabs.com/images/apps/sstool.png" />
-        <MikTile title="WPF colors" url="https://2000thingswpf.files.wordpress.com/2011/02/001-allcolors.png" image="https://www.codeproject.com/KB/WPF/wpfColors/image.jpg" />
-        <MikTile title="Font Awesome" url="https://fontawesome.com/icons?d=gallery&m=free" image="https://www.smartoutput.com/wp-content/uploads/2018/03/fa-featured.jpg" />
-        <MikTile title="Mongo login" url="https://cloud.mongodb.com/user/#/atlas/login" image="https://cdn.iconscout.com/icon/free/png-256/mongodb-2-1175137.png" />
-        <MikTile title="Bierium admin" url="https://bierium.github.io/" image="https://i.ibb.co/QC4sCVB/drawable-xhdpi-icon.png" />
-      </div>
+      const CBcode = ({ label, code }) => (
+        <div className="cb-code">
+          <label>{label}</label>
+          <input
+            type="text"
+            value={code}
+            readOnly
+            onClick={(event) => {
+              event.target.select();
+              document.execCommand("copy");
+            }}
+          />
+        </div>
+      );
+      const CBcode2 = ({ label, code }) => (
+        <div className="cb-code">
+          <label>{label}</label>
+          <textarea
+            style={{width: "50%"}}
+            value={code}
+            readOnly
+            onClick={(event) => {
+              event.target.select();
+              document.execCommand("copy");
+            }}
+          ></textarea>
+        </div>
+      );
+      const MikTile = ({ title, url, image, newtab }) => {
+        const aprops = {
+          href: url,
+          ...(newtab && { target: "_blank" })
+        };
+        return (
+          <a {...aprops}>
+            <div
+              className="tile-con"
+              style={{ backgroundImage: `url(${image})` }}>
+              <div className="tile-title">{title}</div>
+            </div>
+          </a>
+        );
+      };
+      const MikTiles = () => {
+        const [secretOpen, setsecretOpen] = React.useState(false);
+        React.useEffect(() => {
+          document.addEventListener('keydown', e => {
+            if (e.key == 'f')
+              setsecretOpen(true);
+          });
+          document.addEventListener('keyup', e => {
+            if (e.key == 'f')
+              setsecretOpen(false);
+          });
+        }, []);
 
-      <div className="tile-row">
-        <MikTile title="Deezer" url="https://www.deezer.com/en/" image="https://cdn.icon-icons.com/icons2/159/PNG/256/deezer_22419.png" />
-        <MikTile title="Ott-Skylon" url="https://www.youtube.com/watch?v=V4Iow4cWvP0" image="https://upload.wikimedia.org/wikipedia/en/thumb/c/c1/Ott_Skylon.jpg/220px-Ott_Skylon.jpg" />
-      </div>
+        return (
+          <div className="container">
 
-      <div className="other-links">
-        <ReactMarkdown source={mdText} />
-      </div>
-    </div>
-  );
-}
-var mdText = `
+            {secretOpen && (
+              <div className="tile-row">
+                <MikTile
+                  title="beans"
+                  url="https://www.binance.com/en/trade/ETH_USDT?layout=pro"
+                  image="https://seeklogo.com/images/B/binance-coin-bnb-logo-97F9D55608-seeklogo.com.png"
+                />
+                <MikTile
+                  title="TRV"
+                  url="https://www.tradingview.com/chart/Z2yAHsKi/"
+                  image="https://www.tradingview.com/static/images/logo-151x151.png"
+                />
+                <MikTile
+                  title="finviz"
+                  url="https://finviz.com/map.ashx?t=sec_all"
+                  image="https://finviz.com/publish/011020/sec_all_w1_061605695.png"
+                />
+                <MikTile
+                  title="dzzzk"
+                  url="https://ca.finance.yahoo.com/portfolio/p_0/view"
+                  image="https://cdn.iconscout.com/icon/free/png-256/yahoo-2752017-2284834.png"
+                />
+              </div>
+            )}
 
-### Other links
+            <div className="tile-row">
+              <MikTile
+                title="Gmail (home)"
+                url="https://mail.google.com/mail/u"
+                image="https://i0.wp.com/www.mstoic.com/wp-content/uploads/2013/04/gmail1.png"
+              />
+              <MikTile
+                title="Entropy"
+                url="http://entropy-experi.byethost7.com/#/anon/cards"
+                image="https://www.logolynx.com/images/logolynx/d3/d3dde9f47c5a5b90aa3ee2eb0bf7585f.png"
+              />
+              <MikTile
+                title="Udemy"
+                url="https://www.udemy.com/home/my-courses/learning/"
+                image="https://cdn.alleywatch.com/wp-content/uploads/2020/02/Udemy.png"
+              />
+              <MikTile
+                title="Tradingview"
+                url="https://www.tradingview.com/chart/Z2yAHsKi/"
+                image="https://preview.redd.it/n20zr2c13vb71.png?width=460&format=png&auto=webp&s=0c1ba853420ed2ceac755f43b562f7b7687c401a"
+              />
+              <MikTile
+                title="WhatsApp"
+                url="https://web.whatsapp.com/"
+                image="https://image.shutterstock.com/image-photo/image-260nw-601427237.jpg"
+              />
+            </div>
 
- - [ionic React app](https://ionicframework.com/docs/react/your-first-app)
+            <div className="tile-row">
+              <MikTile
+                title="github/miktemk"
+                url="https://github.com/miktemk"
+                image="https://avatars1.githubusercontent.com/u/3788283?s=400&v=4"
+              />
+              <MikTile
+                title="bitbucket/miktemk"
+                url="https://bitbucket.org/miktemk/"
+                image="https://i.ibb.co/Z8SzT7n/3788283.jpg"
+              />
+              <MikTile
+                title="Mongo"
+                url="https://account.mongodb.com/account/login?signedOut=true"
+                image="https://res-2.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco/v1488900822/lvhovgxdslv8tef6nij4.png"
+              />
+              <MikTile
+                title="Bierium admin"
+                url="https://bierium.github.io/"
+                image="https://i.ibb.co/QC4sCVB/drawable-xhdpi-icon.png"
+              />
+            </div>
 
-`;
-ReactDOM.render(
-  <MikTiles />,
-  document.getElementById('root')
-);
+            <div className="tile-row">
+              <MikTile
+                title="Font Awesome"
+                url="https://fontawesome.com/icons?d=gallery&m=free"
+                image="https://www.smartoutput.com/wp-content/uploads/2018/03/fa-featured.jpg"
+              />
+              <MikTile
+                title="Youtube2Mp3"
+                url="https://320ytmp3.com/"
+                image="https://s3.amazonaws.com/media.muckrack.com/profile/images/3836116/grabmp3-2.JPG.256x256_q100_crop-smart.jpg"
+              />
+              <MikTile
+                title="JS beautify"
+                url="https://beautifier.io/"
+                image="https://beautifier.io/web/favicon.png"
+              />
+              <MikTile
+                title="JS minify"
+                url="https://www.minifier.org/"
+                image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDJGfZzREAY9ip2Zs7rUKsQbRBPA5W1RgaDLWdFvioL9AzZZJQAg&s"
+              />
+              <MikTile
+                title="JSON transform"
+                url="https://codepen.io/miktemk/pen/gOxBdpV?editors=0011"
+                image="https://image.shutterstock.com/image-vector/json-file-format-icon-extension-260nw-1760676884.jpg"
+              />
+              <MikTile
+                title="CSS >>> Less"
+                url="http://beautifytools.com/css-to-less-converter.php"
+                image="https://miro.medium.com/max/672/1*O_NwDtfHb1sirw6CAbyoxg.png"
+              />
+              <MikTile
+                title="Less >> CSS"
+                url="https://jsonformatter.org/less-to-css"
+                image="https://image.shutterstock.com/image-vector/css-icon-flat-illustration-vector-260nw-1471535453.jpg"
+              />
+              <MikTile
+                title="Animate SVGs"
+                url="https://maxwellito.github.io/vivus-instant/"
+                image="http://www.codewithcoffee.com/wp-content/uploads/2015/10/vivus.jpg"
+              />
+              <MikTile title="Leshy labs" url="https://www.leshylabs.com/apps/sstool/" image="https://www.leshylabs.com/images/apps/sstool.png" />
+              <MikTile
+                title="Speed test"
+                url="https://fast.com/"
+                image="https://e7.pngegg.com/pngimages/104/705/png-clipart-speedtest-net-internet-access-mobile-phones-speedometer-computer-network-speedometer-thumbnail.png"
+              />
+            </div>
 
+            <div className="tile-row">
+              <MikTile
+                title="Deezer"
+                url="https://www.deezer.com/en/"
+                image="https://cdn.icon-icons.com/icons2/159/PNG/256/deezer_22419.png"
+              />
+              {/* <MikTile
+                title="listle"
+                url="https://www.listle.io/app"
+                image="https://cdn.embed.ly/providers/logos/listle.png"
+              /> */}
+              <MikTile
+                title="Ott-Skylon"
+                url="https://www.youtube.com/watch?v=V4Iow4cWvP0"
+                image="https://upload.wikimedia.org/wikipedia/en/thumb/c/c1/Ott_Skylon.jpg/220px-Ott_Skylon.jpg"
+              />
+              <MikTile
+                title="Audiokniga"
+                url="https://audio-knigi-online.com/proza/otechestvennaja-proza/184-temnye-allei.html"
+                image="https://i.pinimg.com/originals/68/52/1c/68521cfccc5db5db9dab64a59a7be3b2.png"
+              />
+              {/* <MikTile
+                title="Airplanes"
+                url="https://www.billybishopairport.com/flights/arrivals?gclid=EAIaIQobChMIytDg8vnx5gIVhMDACh0C4wI0EAAYASABEgIMDvD_BwE"
+                image="https://www.flyporter.com/Content/Images/about_airport/Billy_Bishop_Toronto_City_Airport.jpg"
+              /> */}
+              <MikTile
+                title="Weather HERE"
+                url="https://www.google.ca/search?q=weather"
+                image="https://is5-ssl.mzstatic.com/image/thumb/Purple/v4/31/70/8f/31708f5a-1615-b54d-7663-8b7e801ef639/source/256x256bb.jpg"
+              />
+              <MikTile
+                title="Weather Toronto"
+                url="https://www.google.ca/search?q=weather+toronto"
+                image="https://is5-ssl.mzstatic.com/image/thumb/Purple/v4/31/70/8f/31708f5a-1615-b54d-7663-8b7e801ef639/source/256x256bb.jpg"
+              />
+              <MikTile
+                title="Weather Wasaga"
+                url="https://www.google.ca/search?q=weather+wasaga"
+                image="https://tile03-cdn.maptoolkit.net/terrain/12/1137/1481.png"
+              />
+              <MikTile
+                title="MXN to CAD"
+                url="https://www.google.ca/search?q=pesos+to+cad"
+                image="https://static.currencyrate.today/f/pairs/mxn/cad.jpg"
+              />
+              <MikTile
+                title="worldometer COVID-19"
+                url="https://www.worldometers.info/coronavirus/"
+                image="https://www.worldometers.info/img/worldometers-fb.jpg"
+              />
+            </div>
+
+            <div className="tile-row">
+              <MikTile
+                title="ADP payroll"
+                url="https://teampay.adp.com"
+                image="https://g.foolcdn.com/art/companylogos/square/adp.png"
+              />
+              <MikTile
+                title="EmpireLife insurance"
+                url="https://pmw.empire.ca/pmwweb/login.jsp"
+                image="https://pbs.twimg.com/profile_images/1131648169677398017/oP-TmlWA.png"
+              />
+            </div>
+
+            {/* <div className="tile-row">
+              <MikTile
+                title="SemanticUI"
+                url="https://react.semantic-ui.com/elements/header/#types-page"
+                image="https://www.getdeveloper.net/wp-content/uploads/2018/02/semantic.png"
+              />
+              <MikTile
+                title="SemanticUI theme"
+                url="https://github.com/Semantic-Org/Semantic-UI-LESS/blob/master/themes/default/elements/header.variables"
+                image="https://react.semantic-ui.com/logo.png"
+              />
+            </div> */}
+
+            <div className="other-links">
+              <h3>Snippets</h3>
+              <CBcode label="TODO: GUIDGUID" code="TODO: [a-f0-9]{8}:" />
+              <CBcode
+                label="(prune) TODO: GUIDGUID"
+                code="TODO: [a-f0-9]{8}: .*"
+              />
+              <CBcode2
+                label="CovidVaccineLocation CANADA"
+                code={"where [LocationId] = 6251999\norder by [date] desc"}
+              />
+            </div>
+
+            <div className="other-links">
+              <Calendar
+                enableRangeSelection={false}
+                enableContextMenu={false}
+                dataSource={[
+                  // .... Covid-19 quarantine
+                  {
+                    id: 0,
+                    name: "Covid-19",
+                    startDate: new Date(2020, 2, 16),
+                    endDate: new Date(2020, 4, 29),
+                    color: "#ffdb59",
+                  },
+                ]}
+                customDayRenderer={(element, date) => {
+                  // LINK: https://raw.githubusercontent.com/fantasyui-com/solstices-and-equinoxes/master/flat.json
+                  // CODE: years.reduce((r, e) => [...r, e.spring, e.summer, e.fall, e.winter], [])
+                  // const equinoxDatesAsStrings = ["2001-03-20T00:00:00","2001-06-21T00:00:00","2001-09-22T00:00:00","2001-12-21T00:00:00","2002-03-20T00:00:00","2002-06-21T00:00:00","2002-09-23T00:00:00","2002-12-22T00:00:00","2003-03-21T00:00:00","2003-06-21T00:00:00","2003-09-23T00:00:00","2003-12-22T00:00:00","2004-03-20T00:00:00","2004-06-21T00:00:00","2004-09-22T00:00:00","2004-12-21T00:00:00","2005-03-20T00:00:00","2005-06-21T00:00:00","2005-09-22T00:00:00","2005-12-21T00:00:00","2006-03-20T00:00:00","2006-06-21T00:00:00","2006-09-23T00:00:00","2006-12-22T00:00:00","2007-03-21T00:00:00","2007-06-21T00:00:00","2007-09-23T00:00:00","2007-12-22T00:00:00","2008-03-20T00:00:00","2008-06-21T00:00:00","2008-09-22T00:00:00","2008-12-21T00:00:00","2009-03-20T00:00:00","2009-06-21T00:00:00","2009-09-22T00:00:00","2009-12-21T00:00:00","2010-03-20T00:00:00","2010-06-21T00:00:00","2010-09-23T00:00:00","2010-12-21T00:00:00","2011-03-20T00:00:00","2011-06-21T00:00:00","2011-09-23T00:00:00","2011-12-22T00:00:00","2012-03-20T00:00:00","2012-06-20T00:00:00","2012-09-22T00:00:00","2012-12-21T00:00:00","2013-03-20T00:00:00","2013-06-21T00:00:00","2013-09-22T00:00:00","2013-12-21T00:00:00","2014-03-20T00:00:00","2014-06-21T00:00:00","2014-09-23T00:00:00","2014-12-21T00:00:00","2015-03-20T00:00:00","2015-06-21T00:00:00","2015-09-23T00:00:00","2015-12-22T00:00:00","2016-03-20T00:00:00","2016-06-20T00:00:00","2016-09-22T00:00:00","2016-12-21T00:00:00","2017-03-20T00:00:00","2017-06-21T00:00:00","2017-09-22T00:00:00","2017-12-21T00:00:00","2018-03-20T00:00:00","2018-06-21T00:00:00","2018-09-23T00:00:00","2018-12-21T00:00:00","2019-03-20T00:00:00","2019-06-21T00:00:00","2019-09-23T00:00:00","2019-12-22T00:00:00","2020-03-20T00:00:00","2020-06-20T00:00:00","2020-09-22T00:00:00","2020-12-21T00:00:00","2021-03-20T00:00:00","2021-06-21T00:00:00","2021-09-22T00:00:00","2021-12-21T00:00:00","2022-03-20T00:00:00","2022-06-21T00:00:00","2022-09-23T00:00:00","2022-12-21T00:00:00","2023-03-20T00:00:00","2023-06-21T00:00:00","2023-09-23T00:00:00","2023-12-22T00:00:00","2024-03-20T00:00:00","2024-06-20T00:00:00","2024-09-22T00:00:00","2024-12-21T00:00:00","2025-03-20T00:00:00","2025-06-21T00:00:00","2025-09-22T00:00:00","2025-12-21T00:00:00","2026-03-20T00:00:00","2026-06-21T00:00:00","2026-09-23T00:00:00","2026-12-21T00:00:00","2027-03-20T00:00:00","2027-06-21T00:00:00","2027-09-23T00:00:00","2027-12-22T00:00:00","2028-03-20T00:00:00","2028-06-20T00:00:00","2028-09-22T00:00:00","2028-12-21T00:00:00","2029-03-20T00:00:00","2029-06-21T00:00:00","2029-09-22T00:00:00","2029-12-21T00:00:00","2030-03-20T00:00:00","2030-06-21T00:00:00","2030-09-22T00:00:00","2030-12-21T00:00:00","2031-03-20T00:00:00","2031-06-21T00:00:00","2031-09-23T00:00:00","2031-12-22T00:00:00","2032-03-20T00:00:00","2032-06-20T00:00:00","2032-09-22T00:00:00","2032-12-21T00:00:00","2033-03-20T00:00:00","2033-06-21T00:00:00","2033-09-22T00:00:00","2033-12-21T00:00:00","2034-03-20T00:00:00","2034-06-21T00:00:00","2034-09-22T00:00:00","2034-12-21T00:00:00","2035-03-20T00:00:00","2035-06-21T00:00:00","2035-09-23T00:00:00","2035-12-22T00:00:00","2036-03-20T00:00:00","2036-06-20T00:00:00","2036-09-22T00:00:00","2036-12-21T00:00:00","2037-03-20T00:00:00","2037-06-21T00:00:00","2037-09-22T00:00:00","2037-12-21T00:00:00","2038-03-20T00:00:00","2038-06-21T00:00:00","2038-09-22T00:00:00","2038-12-21T00:00:00","2039-03-20T00:00:00","2039-06-21T00:00:00","2039-09-23T00:00:00","2039-12-22T00:00:00","2040-03-20T00:00:00","2040-06-20T00:00:00","2040-09-22T00:00:00","2040-12-21T00:00:00","2041-03-20T00:00:00","2041-06-20T00:00:00","2041-09-22T00:00:00","2041-12-21T00:00:00","2042-03-20T00:00:00","2042-06-21T00:00:00","2042-09-22T00:00:00","2042-12-21T00:00:00","2043-03-20T00:00:00","2043-06-21T00:00:00","2043-09-23T00:00:00","2043-12-22T00:00:00","2044-03-19T00:00:00","2044-06-20T00:00:00","2044-09-22T00:00:00","2044-12-21T00:00:00","2045-03-20T00:00:00","2045-06-20T00:00:00","2045-09-22T00:00:00","2045-12-21T00:00:00","2046-03-20T00:00:00","2046-06-21T00:00:00","2046-09-22T00:00:00","2046-12-21T00:00:00","2047-03-20T00:00:00","2047-06-21T00:00:00","2047-09-23T00:00:00","2047-12-21T00:00:00","2048-03-19T00:00:00","2048-06-20T00:00:00","2048-09-22T00:00:00","2048-12-21T00:00:00","2049-03-20T00:00:00","2049-06-20T00:00:00","2049-09-22T00:00:00","2049-12-21T00:00:00","2050-03-20T00:00:00","2050-06-21T00:00:00","2050-09-22T00:00:00","2050-12-21T00:00:00","2051-03-20T00:00:00","2051-06-21T00:00:00","2051-09-23T00:00:00","2051-12-21T00:00:00","2052-03-19T00:00:00","2052-06-20T00:00:00","2052-09-22T00:00:00","2052-12-21T00:00:00","2053-03-20T00:00:00","2053-06-20T00:00:00","2053-09-22T00:00:00","2053-12-21T00:00:00","2054-03-20T00:00:00","2054-06-21T00:00:00","2054-09-22T00:00:00","2054-12-21T00:00:00","2055-03-20T00:00:00","2055-06-21T00:00:00","2055-09-23T00:00:00","2055-12-21T00:00:00","2056-03-19T00:00:00","2056-06-20T00:00:00","2056-09-22T00:00:00","2056-12-21T00:00:00","2057-03-20T00:00:00","2057-06-20T00:00:00","2057-09-22T00:00:00","2057-12-21T00:00:00","2058-03-20T00:00:00","2058-06-21T00:00:00","2058-09-22T00:00:00","2058-12-21T00:00:00","2059-03-20T00:00:00","2059-06-21T00:00:00","2059-09-23T00:00:00","2059-12-21T00:00:00","2060-03-19T00:00:00","2060-06-20T00:00:00","2060-09-22T00:00:00","2060-12-21T00:00:00","2061-03-20T00:00:00","2061-06-20T00:00:00","2061-09-22T00:00:00","2061-12-21T00:00:00","2062-03-20T00:00:00","2062-06-21T00:00:00","2062-09-22T00:00:00","2062-12-21T00:00:00","2063-03-20T00:00:00","2063-06-21T00:00:00","2063-09-22T00:00:00","2063-12-21T00:00:00","2064-03-19T00:00:00","2064-06-20T00:00:00","2064-09-22T00:00:00","2064-12-21T00:00:00","2065-03-20T00:00:00","2065-06-20T00:00:00","2065-09-22T00:00:00","2065-12-21T00:00:00","2066-03-20T00:00:00","2066-06-21T00:00:00","2066-09-22T00:00:00","2066-12-21T00:00:00","2067-03-20T00:00:00","2067-06-21T00:00:00","2067-09-22T00:00:00","2067-12-21T00:00:00","2068-03-19T00:00:00","2068-06-20T00:00:00","2068-09-22T00:00:00","2068-12-21T00:00:00","2069-03-20T00:00:00","2069-06-20T00:00:00","2069-09-22T00:00:00","2069-12-21T00:00:00","2070-03-20T00:00:00","2070-06-20T00:00:00","2070-09-22T00:00:00","2070-12-21T00:00:00","2071-03-20T00:00:00","2071-06-21T00:00:00","2071-09-22T00:00:00","2071-12-21T00:00:00","2072-03-19T00:00:00","2072-06-20T00:00:00","2072-09-22T00:00:00","2072-12-21T00:00:00","2073-03-20T00:00:00","2073-06-20T00:00:00","2073-09-22T00:00:00","2073-12-21T00:00:00","2074-03-20T00:00:00","2074-06-20T00:00:00","2074-09-22T00:00:00","2074-12-21T00:00:00","2075-03-20T00:00:00","2075-06-21T00:00:00","2075-09-22T00:00:00","2075-12-21T00:00:00","2076-03-19T00:00:00","2076-06-20T00:00:00","2076-09-22T00:00:00","2076-12-21T00:00:00","2077-03-19T00:00:00","2077-06-20T00:00:00","2077-09-22T00:00:00","2077-12-21T00:00:00","2078-03-20T00:00:00","2078-06-20T00:00:00","2078-09-22T00:00:00","2078-12-21T00:00:00","2079-03-20T00:00:00","2079-06-21T00:00:00","2079-09-22T00:00:00","2079-12-21T00:00:00","2080-03-19T00:00:00","2080-06-20T00:00:00","2080-09-22T00:00:00","2080-12-20T00:00:00","2081-03-19T00:00:00","2081-06-20T00:00:00","2081-09-22T00:00:00","2081-12-21T00:00:00","2082-03-20T00:00:00","2082-06-20T00:00:00","2082-09-22T00:00:00","2082-12-21T00:00:00","2083-03-20T00:00:00","2083-06-21T00:00:00","2083-09-22T00:00:00","2083-12-21T00:00:00","2084-03-19T00:00:00","2084-06-20T00:00:00","2084-09-22T00:00:00","2084-12-20T00:00:00","2085-03-19T00:00:00","2085-06-20T00:00:00","2085-09-22T00:00:00","2085-12-21T00:00:00","2086-03-20T00:00:00","2086-06-20T00:00:00","2086-09-22T00:00:00","2086-12-21T00:00:00","2087-03-20T00:00:00","2087-06-21T00:00:00","2087-09-22T00:00:00","2087-12-21T00:00:00","2088-03-19T00:00:00","2088-06-20T00:00:00","2088-09-22T00:00:00","2088-12-20T00:00:00","2089-03-19T00:00:00","2089-06-20T00:00:00","2089-09-22T00:00:00","2089-12-21T00:00:00","2090-03-20T00:00:00","2090-06-20T00:00:00","2090-09-22T00:00:00","2090-12-21T00:00:00","2091-03-20T00:00:00","2091-06-21T00:00:00","2091-09-22T00:00:00","2091-12-21T00:00:00","2092-03-19T00:00:00","2092-06-20T00:00:00","2092-09-21T00:00:00","2092-12-20T00:00:00","2093-03-19T00:00:00","2093-06-20T00:00:00","2093-09-22T00:00:00","2093-12-21T00:00:00","2094-03-20T00:00:00","2094-06-20T00:00:00","2094-09-22T00:00:00","2094-12-21T00:00:00","2095-03-20T00:00:00","2095-06-21T00:00:00","2095-09-22T00:00:00","2095-12-21T00:00:00","2096-03-19T00:00:00","2096-06-20T00:00:00","2096-09-21T00:00:00","2096-12-20T00:00:00","2097-03-19T00:00:00","2097-06-20T00:00:00","2097-09-22T00:00:00","2097-12-21T00:00:00","2098-03-20T00:00:00","2098-06-20T00:00:00","2098-09-22T00:00:00","2098-12-21T00:00:00","2099-03-20T00:00:00","2099-06-20T00:00:00","2099-09-22T00:00:00","2099-12-21T00:00:00","2100-03-20T00:00:00","2100-06-21T00:00:00","2100-09-22T00:00:00","2100-12-21T00:00:00"];
+                  // CODE: dates.map(x => new Date(x).getTime())
+                  const equinoxDatesAsTimestamps = [985064400000,993096000000,1001131200000,1008910800000,1016600400000,1024632000000,1032753600000,1040533200000,1048222800000,1056168000000,1064289600000,1072069200000,1079758800000,1087790400000,1095825600000,1103605200000,1111294800000,1119326400000,1127361600000,1135141200000,1142830800000,1150862400000,1158984000000,1166763600000,1174449600000,1182398400000,1190520000000,1198299600000,1205985600000,1214020800000,1222056000000,1229835600000,1237521600000,1245556800000,1253592000000,1261371600000,1269057600000,1277092800000,1285214400000,1292907600000,1300593600000,1308628800000,1316750400000,1324530000000,1332216000000,1340164800000,1348286400000,1356066000000,1363752000000,1371787200000,1379822400000,1387602000000,1395288000000,1403323200000,1411444800000,1419138000000,1426824000000,1434859200000,1442980800000,1450760400000,1458446400000,1466395200000,1474516800000,1482296400000,1489982400000,1498017600000,1506052800000,1513832400000,1521518400000,1529553600000,1537675200000,1545368400000,1553054400000,1561089600000,1569211200000,1576990800000,1584676800000,1592625600000,1600747200000,1608526800000,1616212800000,1624248000000,1632283200000,1640062800000,1647748800000,1655784000000,1663905600000,1671598800000,1679284800000,1687320000000,1695441600000,1703221200000,1710907200000,1718856000000,1726977600000,1734757200000,1742443200000,1750478400000,1758513600000,1766293200000,1773979200000,1782014400000,1790136000000,1797829200000,1805515200000,1813550400000,1821672000000,1829451600000,1837137600000,1845086400000,1853208000000,1860987600000,1868673600000,1876708800000,1884744000000,1892523600000,1900209600000,1908244800000,1916280000000,1924059600000,1931745600000,1939780800000,1947902400000,1955682000000,1963368000000,1971316800000,1979438400000,1987218000000,1994904000000,2002939200000,2010974400000,2018754000000,2026440000000,2034475200000,2042510400000,2050290000000,2057976000000,2066011200000,2074132800000,2081912400000,2089598400000,2097547200000,2105668800000,2113448400000,2121134400000,2129169600000,2137204800000,2144984400000,2152670400000,2160705600000,2168740800000,2176520400000,2184206400000,2192241600000,2200363200000,2208142800000,2215828800000,2223777600000,2231899200000,2239678800000,2247364800000,2255313600000,2263435200000,2271214800000,2278900800000,2286936000000,2294971200000,2302750800000,2310436800000,2318472000000,2326593600000,2334373200000,2341972800000,2350008000000,2358129600000,2365909200000,2373595200000,2381544000000,2389665600000,2397445200000,2405131200000,2413166400000,2421201600000,2428981200000,2436667200000,2444702400000,2452824000000,2460517200000,2468203200000,2476238400000,2484360000000,2492139600000,2499825600000,2507774400000,2515896000000,2523675600000,2531361600000,2539396800000,2547432000000,2555211600000,2562897600000,2570932800000,2579054400000,2586747600000,2594433600000,2602468800000,2610590400000,2618370000000,2626056000000,2634004800000,2642126400000,2649906000000,2657592000000,2665627200000,2673662400000,2681442000000,2689128000000,2697163200000,2705284800000,2712978000000,2720664000000,2728699200000,2736820800000,2744600400000,2752286400000,2760235200000,2768356800000,2776136400000,2783822400000,2791857600000,2799892800000,2807672400000,2815358400000,2823393600000,2831515200000,2839208400000,2846894400000,2854929600000,2863051200000,2870830800000,2878516800000,2886465600000,2894587200000,2902366800000,2910052800000,2918088000000,2926123200000,2933902800000,2941588800000,2949624000000,2957659200000,2965438800000,2973124800000,2981160000000,2989281600000,2997061200000,3004747200000,3012696000000,3020817600000,3028597200000,3036283200000,3044318400000,3052353600000,3060133200000,3067819200000,3075854400000,3083889600000,3091669200000,3099355200000,3107390400000,3115512000000,3123291600000,3130977600000,3138926400000,3147048000000,3154827600000,3162513600000,3170462400000,3178584000000,3186363600000,3194049600000,3202084800000,3210120000000,3217899600000,3225585600000,3233620800000,3241742400000,3249522000000,3257208000000,3265156800000,3273278400000,3281058000000,3288744000000,3296692800000,3304814400000,3312594000000,3320280000000,3328315200000,3336350400000,3344130000000,3351816000000,3359851200000,3367972800000,3375752400000,3383352000000,3391387200000,3399508800000,3407288400000,3414974400000,3422923200000,3431044800000,3438824400000,3446510400000,3454545600000,3462580800000,3470360400000,3478046400000,3486081600000,3494203200000,3501896400000,3509582400000,3517617600000,3525739200000,3533518800000,3541204800000,3549153600000,3557275200000,3565054800000,3572740800000,3580776000000,3588811200000,3596590800000,3604276800000,3612312000000,3620433600000,3628126800000,3635812800000,3643848000000,3651969600000,3659749200000,3667435200000,3675384000000,3683505600000,3691285200000,3698971200000,3707006400000,3715041600000,3722821200000,3730507200000,3738542400000,3746664000000,3754357200000,3762043200000,3770078400000,3778200000000,3785979600000,3793665600000,3801614400000,3809736000000,3817515600000,3825201600000,3833236800000,3841272000000,3849051600000,3856737600000,3864772800000,3872808000000,3880587600000,3888273600000,3896308800000,3904430400000,3912210000000,3919896000000,3927844800000,3935966400000,3943746000000,3951432000000,3959467200000,3967502400000,3975282000000,3982968000000,3991003200000,3999038400000,4006818000000,4014504000000,4022539200000,4030660800000,4038440400000,4046126400000,4054075200000,4062196800000,4069976400000,4077662400000,4085611200000,4093732800000,4101512400000,4109198400000,4117233600000,4125268800000,4133048400000];
+                  if (date.getTime() === DateDayToday.getTime()) {
+                    //element.style.fontWeight = 'bold';
+                    element.style.color = "white";
+                    element.style.background = "red";
+                    element.style.borderRadius = "50%";
+                  }
+                  // 2020 solstice & equinox
+                  else if (equinoxDatesAsTimestamps.includes(date.getTime())) {
+                    element.style.background = "yellow";
+                    element.style.borderRadius = "50%";
+                    element.style.border = "1px solid red";
+                  }
+                  //else if(date.getTime() === new Date('2020-05-18T00:00:00').getTime()
+                  //     || date.getTime() === new Date('2020-06-08T00:00:00').getTime()
+                  //     || date.getTime() === new Date('2020-06-29T00:00:00').getTime()
+                  //     || date.getTime() === new Date('2020-07-20T00:00:00').getTime()
+                  //     || date.getTime() === new Date('2020-08-10T00:00:00').getTime()) {
+                  //  element.style.background = 'cyan';
+                  //  element.style.borderRadius = '50%';
+                  //}
+                }}
+              />
+            </div>
+
+            <div className="other-links centered">
+              <div dangerouslySetInnerHTML={{__html:'<iframe src="https://calendar.google.com/calendar/embed?src=miktemk%40gmail.com&ctz=America%2FToronto" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>'}}></div>
+            </div>
+
+            <div className="other-links">
+              <ReactMarkdown
+                source={`
+  ### Other links
+
+  - [theme-ui sx props](https://theme-ui.com/components/#style-props)
+  - [ionic React app](https://ionicframework.com/docs/react/your-first-app)
+
+  ### D3 tutorials
+
+  - [d3indepth](https://www.d3indepth.com/layouts/) - the best one
+  - [observablehq](https://observablehq.com/@d3/d3-group) - created by Mike Bostock!
+  - [tutorialspoint](https://www.tutorialspoint.com/d3js/d3js_concepts.htm)
+  - [tutorialsteacher](https://www.tutorialsteacher.com/d3js/dom-manipulation-using-d3js) - not great, too basic
+
+  `}
+              />
+            </div>
+          </div>
+        );
+      }
+      ReactDOM.render(<MikTiles />, document.getElementById("root"));
     </script>
-
   </body>
 </html>
